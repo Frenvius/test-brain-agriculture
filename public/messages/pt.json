@@ -1,16 +1,3 @@
 {
-	"Index": {
-		"getStarted": "Comece a editar",
-		"branding": "Por",
-		"vercelLogoAlt": "Logo da Vercel",
-		"nextjsLogoAlt": "Logo do Next.js",
-		"docsTitle": "Documentos ->",
-		"docsDescription": "Encontre mais informações sobre as funções e a API do Next.js.",
-		"learnTitle": "Aprenda ->",
-		"learnDescription": "Aprenda sobre Next.js num curso interativo com questionários!",
-		"templatesTitle": "Modelos ->",
-		"templatesDescription": "Explore modelos iniciais para Next.js.",
-		"deployTitle": "Publique ->",
-		"deployDescription": "Publique seu site Next.js de forma fácil com a Vercel."
-	}
+	"Index": {}
 }
