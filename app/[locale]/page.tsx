@@ -1,14 +1,16 @@
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
-import styles from '../styles/page.module.scss';
+import styles from '~/styles/page.module.scss';
 
 export default function Home() {
+	const t = useTranslations('Index');
+
 	return (
 		<main className={styles.main}>
 			<div className={styles.description}>
 				<p>
-					Get started by editing&nbsp;
-					<code className={styles.code}>app/page.tsx</code>
+					{t('getStarted')} <code className={styles.code}>app/page.tsx</code>
 				</p>
 				<div>
 					<a
@@ -16,13 +18,14 @@ export default function Home() {
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						By <Image src="/vercel.svg" alt="Vercel Logo" className={styles.vercelLogo} width={100} height={24} priority />
+						{t('branding')}{' '}
+						<Image src="/vercel.svg" alt={t('vercelLogoAlt')} className={styles.vercelLogo} width={100} height={24} priority />
 					</a>
 				</div>
 			</div>
 
 			<div className={styles.center}>
-				<Image className={styles.logo} src="/next.svg" alt="Next.js Logo" width={180} height={37} priority />
+				<Image className={styles.logo} src="/next.svg" alt={t('nextjsLogoAlt')} width={180} height={37} priority />
 			</div>
 
 			<div className={styles.grid}>
@@ -32,10 +35,8 @@ export default function Home() {
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<h2>
-						Docs <span>-&gt;</span>
-					</h2>
-					<p>Find in-depth information about Next.js features and API.</p>
+					<h2>{t('docsTitle')}</h2>
+					<p>{t('docsDescription')}</p>
 				</a>
 
 				<a
@@ -44,10 +45,8 @@ export default function Home() {
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<h2>
-						Learn <span>-&gt;</span>
-					</h2>
-					<p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
+					<h2>{t('learnTitle')}</h2>
+					<p>{t('learnDescription')}</p>
 				</a>
 
 				<a
@@ -56,10 +55,8 @@ export default function Home() {
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<h2>
-						Templates <span>-&gt;</span>
-					</h2>
-					<p>Explore starter templates for Next.js.</p>
+					<h2>{t('templatesTitle')}</h2>
+					<p>{t('templatesDescription')}</p>
 				</a>
 
 				<a
@@ -68,10 +65,8 @@ export default function Home() {
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<h2>
-						Deploy <span>-&gt;</span>
-					</h2>
-					<p>Instantly deploy your Next.js site to a shareable URL with Vercel.</p>
+					<h2>{t('deployTitle')}</h2>
+					<p>{t('deployDescription')}</p>
 				</a>
 			</div>
 		</main>
