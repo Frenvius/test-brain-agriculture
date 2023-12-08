@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 499.88 392.22">
+    <defs>
+        <style>
+            .cls-1 {
+            isolation: isolate;
+            }
+
+            .cls-2 {
+            fill: #606161;
+            }
+
+            .cls-2, .cls-3, .cls-4 {
+            stroke-width: 0px;
+            }
+
+            .cls-3 {
+            fill: url(#linear-gradient);
+            fill-rule: evenodd;
+            }
+
+            .cls-4 {
+            fill: #5da489;
+            }
+        </style>
+        <linearGradient id="linear-gradient" x1="-54.74" y1="591.54" x2="-53.83" y2="591.54" gradientTransform="translate(29996.54 110119.83) scale(548 -186)" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#75c482"/>
+            <stop offset="1" stop-color="#5da489"/>
+        </linearGradient>
+    </defs>
+    <path class="cls-3" d="m.44,0h499v186h-44.62V45H47.79v55.1H.53L.44,0Z"/>
+    <g class="cls-1">
+        <g class="cls-1">
+            <path class="cls-2" d="m182.52,299.57c0,54.05-34.93,92.65-82.87,92.65-25,0-43.49-11.23-55.13-30.53v26.67H0V127.26h45.89v110.2c11.99-18.6,30.82-29.48,54.79-29.48,48.63,0,81.84,37.9,81.84,91.6Zm-46.92,0c0-28.43-17.12-48.08-43.83-48.08s-46.92,20-46.92,48.08,18.83,49.48,45.89,49.48,44.86-21.06,44.86-49.48Z"/>
+        </g>
+        <g class="cls-1">
+            <path class="cls-4" d="m499.88,211.84v176.53h-44.52v-26.32c-11.99,19.3-30.82,30.18-55.82,30.18-48.28,0-81.84-37.55-81.84-91.95s33.9-92.3,82.87-92.3c24.66,0,43.15,10.88,54.79,30.18v-26.32h44.52Zm-44.52,88.44c0-28.08-19.52-48.78-46.23-48.78s-44.52,20.71-44.52,48.78,17.81,48.78,44.52,48.78,46.23-20.35,46.23-48.78Z"/>
+        </g>
+    </g>
+</svg>

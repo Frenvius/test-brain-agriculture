@@ -1,3 +1,15 @@
 {
-	"Index": {}
+	"menu": {
+		"items": {
+			"dashboard": "Dashboard",
+			"producers": "Produtores"
+		},
+		"userData": {
+			"roles": {
+				"admin": "Administrador",
+				"producer": "Produtor",
+				"consumer": "Consumidor"
+			}
+		}
+	}
 }

@@ -1,7 +1,86 @@
+@import '/styles/mixins.scss';
+
 .container {
 	width: 100%;
 	height: 100%;
 	padding: 16px;
+
+	.sidebar {
+		display: flex;
+		position: relative;
+		padding-right: 16px;
+		flex-direction: column;
+
+		.logo {
+			margin: 14px 0;
+			display: flex;
+			font-size: 18px;
+			font-weight: 500;
+			align-items: center;
+
+			img {
+				margin-right: 16px;
+			}
+		}
+
+		.divider {
+			margin: 0 0 16px;
+		}
+
+		.menu {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.freeArea {
+			height: 100%;
+			display: flex;
+			position: relative;
+			transition: all 0.5s;
+
+			.mockUser {
+				width: 100%;
+				height: 60px;
+				padding: 8px;
+				display: flex;
+				cursor: pointer;
+				margin-top: auto;
+				align-items: center;
+
+				.avatar {
+					@include card;
+					display: flex;
+					align-items: center;
+					margin-right: 8px;
+				}
+
+				.name {
+					color: #000000a6;
+				}
+
+				.role {
+					font-weight: 500;
+				}
+
+				.arrows {
+					display: flex;
+					margin-left: auto;
+					flex-direction: column;
+
+					svg {
+						width: 10px;
+						height: 8px;
+
+						path {
+							color: #000000a6;
+						}
+					}
+				}
+			}
+		}
+
+	}
 }
 
 .content {
