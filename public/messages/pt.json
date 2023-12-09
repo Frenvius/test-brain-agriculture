@@ -11,5 +11,23 @@
 				"consumer": "Consumidor"
 			}
 		}
+	},
+	"producers": {
+		"breadcrumb": "Voltar para o Dashboard",
+		"title": "Produtores",
+		"add": "Adicionar Produtor",
+		"list": {
+			"actions": {
+				"edit": "Editar",
+				"delete": "Excluir"
+			}
+		},
+		"crops": {
+			"soy": "Soja",
+			"corn": "Milho",
+			"cotton": "Algodão",
+			"coffee": "Café",
+			"sugarcane": "Cana-de-açúcar"
+		}
 	}
 }

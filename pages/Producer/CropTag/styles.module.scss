@@ -1,0 +1,26 @@
+.container {
+	.crop-soy {
+		background-color: #e8dcd3;
+		border: 1px solid darken(#e8dcd3, 20%);
+	}
+
+	.crop-corn {
+		background-color: #fff3d4;
+		border: 1px solid darken(#fff3d4, 20%);
+	}
+
+	.crop-cotton {
+		background-color: #f7faff;
+		border: 1px solid darken(#f7faff, 20%);
+	}
+
+	.crop-coffee {
+		background-color: #d3b8a3;
+		border: 1px solid darken(#d3b8a3, 20%);
+	}
+
+	.crop-sugarcane {
+		background-color: #d3ebd4;
+		border: 1px solid darken(#d3ebd4, 20%);
+	}
+}

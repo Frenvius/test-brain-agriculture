@@ -11,5 +11,23 @@
 				"consumer": "Consumer"
 			}
 		}
+	},
+	"producers": {
+		"breadcrumb": "Back to Dashboard",
+		"title": "Producers",
+		"add": "Add Producer",
+		"list": {
+			"actions": {
+				"edit": "Edit",
+				"delete": "Delete"
+			}
+		},
+		"crops": {
+			"soy": "Soy",
+			"corn": "Corn",
+			"cotton": "Cotton",
+			"coffee": "Coffee",
+			"sugarcane": "Sugarcane"
+		}
 	}
 }
