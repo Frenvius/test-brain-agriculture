@@ -17,6 +17,15 @@
 		"title": "Produtores",
 		"add": "Adicionar Produtor",
 		"list": {
+			"name": "Nome",
+			"farmName": "Nome da Fazenda",
+			"city": "Cidade",
+			"state": "Estado",
+			"area": "Área (ha)",
+			"usefulArea": "Área Útil (ha)",
+			"vegetationArea": "Área de Vegetação (ha)",
+			"plantedCrops": "Culturas Plantadas",
+			"action": "Ações",
 			"actions": {
 				"edit": "Editar",
 				"delete": "Excluir"

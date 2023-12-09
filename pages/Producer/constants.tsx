@@ -10,48 +10,48 @@ import { ProducerResponse } from '~/app/domain/response/ProducerResponse';
 
 export const columns = (t: any): ColumnsType<ProducerResponse> => [
 	{
-		title: 'Name',
+		title: t('list.name'),
 		dataIndex: 'name',
 		key: 'name'
 	},
 	{
-		title: 'Farm Name',
+		title: t('list.farmName'),
 		dataIndex: ['farm', 'name'],
 		key: 'farmName'
 	},
 	{
-		title: 'City',
+		title: t('list.city'),
 		dataIndex: ['farm', 'city'],
 		key: 'city'
 	},
 	{
-		title: 'State',
+		title: t('list.state'),
 		dataIndex: ['farm', 'state'],
 		key: 'state'
 	},
 	{
-		title: 'Total Area (ha)',
+		title: t('list.area'),
 		dataIndex: ['farm', 'area'],
 		key: 'totalArea'
 	},
 	{
-		title: 'Arable Area (ha)',
+		title: t('list.usefulArea'),
 		dataIndex: ['farm', 'usefulArea'],
 		key: 'arableArea'
 	},
 	{
-		title: 'Vegetation Area (ha)',
+		title: t('list.vegetationArea'),
 		dataIndex: ['farm', 'vegetationArea'],
 		key: 'vegetationArea'
 	},
 	{
-		title: 'Planted Crops',
+		title: t('list.plantedCrops'),
 		dataIndex: ['farm', 'plantedCrops'],
 		key: 'plantedCrops',
 		render: (crops) => crops?.map((crop: CropResponse, index: number) => <CropTag key={index} crop={crop} />)
 	},
 	{
-		title: 'Action',
+		title: t('list.action'),
 		key: 'action',
 		render: () => (
 			<Space size="middle">

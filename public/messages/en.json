@@ -17,6 +17,15 @@
 		"title": "Producers",
 		"add": "Add Producer",
 		"list": {
+			"name": "Name",
+			"farmName": "Farm Name",
+			"city": "City",
+			"state": "State",
+			"area": "Total Area (ha)",
+			"usefulArea": "Arable Area (ha)",
+			"vegetationArea": "Vegetation Area (ha)",
+			"plantedCrops": "Planted Crops",
+			"action": "Actions",
 			"actions": {
 				"edit": "Edit",
 				"delete": "Delete"
