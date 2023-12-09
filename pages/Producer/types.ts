@@ -1,15 +1,5 @@
-export interface DataType {
-	id: string;
-	name: string;
-	farm: Farm;
-}
+import { ProducerResponse } from '~/app/domain/response/ProducerResponse';
 
-export interface Farm {
-	name: string;
-	city: string;
-	state: string;
-	area: number;
-	usefulArea: number;
-	vegetationArea: number;
-	plantedCrops: string[];
+export interface ProducerProps {
+	data: ProducerResponse[];
 }

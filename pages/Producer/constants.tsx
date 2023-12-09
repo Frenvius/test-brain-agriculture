@@ -4,52 +4,11 @@ import React from 'react';
 import { Space, Button } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
-import { DataType } from './types';
 import CropTag from '~/pages/Producer/CropTag';
+import { CropResponse } from '~/app/domain/response/CropResponse';
+import { ProducerResponse } from '~/app/domain/response/ProducerResponse';
 
-export const data: DataType[] = [
-	{
-		id: '1',
-		name: 'John Brown',
-		farm: {
-			name: 'Sunshine Farms',
-			city: 'New York',
-			state: 'NY',
-			area: 500,
-			usefulArea: 300,
-			vegetationArea: 50,
-			plantedCrops: ['Corn', 'Soy']
-		}
-	},
-	{
-		id: '2',
-		name: 'Jim Green',
-		farm: {
-			name: 'Green Pastures',
-			city: 'London',
-			state: 'LD',
-			area: 600,
-			usefulArea: 400,
-			vegetationArea: 100,
-			plantedCrops: ['Sugarcane', 'Cotton']
-		}
-	},
-	{
-		id: '3',
-		name: 'Joe Black',
-		farm: {
-			name: 'Black Meadows',
-			city: 'Sydney',
-			state: 'SY',
-			area: 450,
-			usefulArea: 350,
-			vegetationArea: 70,
-			plantedCrops: ['Coffee', 'Soy']
-		}
-	}
-];
-
-export const columns = (t: any): ColumnsType<DataType> => [
+export const columns = (t: any): ColumnsType<ProducerResponse> => [
 	{
 		title: 'Name',
 		dataIndex: 'name',
@@ -89,7 +48,7 @@ export const columns = (t: any): ColumnsType<DataType> => [
 		title: 'Planted Crops',
 		dataIndex: ['farm', 'plantedCrops'],
 		key: 'plantedCrops',
-		render: (crops) => crops.map((crop: string, index: number) => <CropTag key={index} crop={crop} />)
+		render: (crops) => crops?.map((crop: CropResponse, index: number) => <CropTag key={index} crop={crop} />)
 	},
 	{
 		title: 'Action',

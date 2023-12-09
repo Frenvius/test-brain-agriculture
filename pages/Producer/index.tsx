@@ -4,13 +4,14 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 import { Table, Button, Typography } from 'antd';
 
+import { columns } from './constants';
+import { ProducerProps } from './types';
 import styles from './styles.module.scss';
-import { data, columns } from './constants';
 import Breadcrumb from '~/components/commons/Breadcrumb';
 
 const { Title } = Typography;
 
-const Producer: React.FC = () => {
+const Producer = ({ data }: ProducerProps) => {
 	const t = useTranslations('producers');
 
 	return (
