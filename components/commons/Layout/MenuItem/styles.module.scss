@@ -1,54 +1,54 @@
 @import '/styles/mixins.scss';
+.container {
+	.menuItem {
+		width: 100%;
+		padding: 8px 12px;
+		text-align: left;
+		display: flex;
+		color: #000000e0;
+		align-items: center;
 
-.menuItem {
-	width: 100%;
-	padding: 8px 12px;
-	display: flex;
-	cursor: pointer;
-	color: #000000e0;
-	border-radius: 8px;
-	align-items: center;
-	transition: background 0.2s ease-out;
+		i {
+			margin-right: 8px;
+			pointer-events: none;
 
-	i {
-		margin-right: 8px;
-		pointer-events: none;
-
-		svg {
-			path {
-				fill: #000000e0;
+			svg {
+				path {
+					fill: #000000e0;
+				}
 			}
+		}
+
+		&.active {
+			@include card;
+			padding: 8px 12px;
+		}
+
+		&:hover {
+			background-position: 0;
 		}
 	}
 
-	&.active {
-		@include card;
-		padding: 8px 12px;
+	.menuChildren {
+		display: flex;
+		flex-direction: column;
+		margin: -8px 8px 8px;
+		overflow: hidden;
+		transition: max-height 0.15s ease-out;
+
+		&.floatMenu {
+			margin: 0;
+			left: 86px;
+			z-index: 999;
+			padding: 8px 12px 8px 4px;
+			background-color: #24222d;
+		}
+
+		.menuItem {
+			height: 40px;
+			margin-bottom: 4px;
+			background-color: transparent;
+		}
 	}
 
-	&:hover {
-		background-position: 0;
-	}	
-}
-
-.menuChildren {
-	display: flex;
-	flex-direction: column;
-	margin: -8px 8px 8px;
-	overflow: hidden;
-	transition: max-height 0.15s ease-out;
-
-	&.floatMenu {
-		margin: 0;
-		left: 86px;
-		z-index: 999;
-		padding: 8px 12px 8px 4px;
-		background-color: #24222d;
-	}
-
-	.menuItem {
-		height: 40px;
-		margin-bottom: 4px;
-		background-color: transparent;
-	}
 }
