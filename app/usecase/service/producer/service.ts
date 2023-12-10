@@ -30,8 +30,8 @@ class Service {
 		return await this._serverClient.post(`${this.basePath}/search`, body, 'no-store');
 	}
 
-	public async delete(id: number, type: string, token: string): Promise<any> {
-		return this._serverClient.delete(`/${type}/${id}`);
+	public async delete(id: number): Promise<any> {
+		return this._serverClient.delete(`${this.basePath}/${id}`);
 	}
 }
 

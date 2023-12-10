@@ -29,7 +29,14 @@
 			"action": "Actions",
 			"actions": {
 				"edit": "Edit",
-				"delete": "Delete"
+				"delete": "Delete",
+				"deleteConfirm": {
+					"title": "Delete Producer",
+					"description": "Are you sure you want to delete producer {name}?",
+					"success": "Producer deleted successfully.",
+					"confirm": "Delete",
+					"cancel": "Cancel"
+				}
 			}
 		},
 		"form": {

@@ -29,7 +29,14 @@
 			"action": "Ações",
 			"actions": {
 				"edit": "Editar",
-				"delete": "Excluir"
+				"delete": "Excluir",
+				"deleteConfirm": {
+					"title": "Excluir Produtor",
+					"description": "Tem certeza que deseja excluir o produtor {name}?",
+					"success": "Produtor excluído com sucesso",
+					"confirm": "Excluir",
+					"cancel": "Cancelar"
+				}
 			}
 		},
 		"form": {
