@@ -86,7 +86,7 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 
 	return (
 		<div className={styles.container}>
-			<Breadcrumb label={t('breadcrumb')} />
+			<Breadcrumb label={t('breadcrumb')} link={'/producers'} />
 			<Title level={2}>{title}</Title>
 			<Form
 				form={form}

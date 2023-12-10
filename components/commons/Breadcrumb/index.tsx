@@ -4,16 +4,16 @@ import { ArrowLeftOutlined } from '@ant-design/icons';
 
 import styles from './styles.module.scss';
 
-const Breadcrumb = ({ label }: { label: string }) => {
+const Breadcrumb = ({ label, link }: { label: string; link?: string }) => {
 	const router = useRouter();
 
 	const handleBack = () => {
-		router.back();
+		link ? router.push(link) : router.back();
 	};
 
 	return (
 		<span className={styles.breadcrumb}>
-			<ArrowLeftOutlined />
+			<ArrowLeftOutlined onClick={() => handleBack()} />
 			<Button type="text" onClick={() => handleBack()}>
 				{label}
 			</Button>

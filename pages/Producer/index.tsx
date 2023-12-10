@@ -22,7 +22,7 @@ const Producer = ({ data }: ProducerProps) => {
 
 	return (
 		<div className={styles.container}>
-			<Breadcrumb label={t('breadcrumb')} />
+			<Breadcrumb label={t('breadcrumb')} link={'/dashboard'} />
 			<div className={styles.header}>
 				<Title level={2} className={styles.title}>
 					{t('title')}
