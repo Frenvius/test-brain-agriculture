@@ -1,9 +1,11 @@
+import { Props } from './types';
 import Producer from '~/pages/Producer';
 import { producerService } from '~/app/usecase/service/producer/service';
 
-const ProducerPage = async () => {
-	const producerList = await producerService.search();
-	return <Producer data={producerList.items} />;
+const ProducerPage = async ({ searchParams }: Props) => {
+	const { page } = searchParams || {};
+	const producerList = await producerService.search({}, page);
+	return <Producer data={producerList} />;
 };
 
 export default ProducerPage;

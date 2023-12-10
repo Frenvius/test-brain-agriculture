@@ -9,12 +9,17 @@ import { columns } from './constants';
 import { ProducerProps } from './types';
 import styles from './styles.module.scss';
 import Breadcrumb from '~/components/commons/Breadcrumb';
+import { PAGE_SIZE } from '~/app/usecase/util/constants';
 
 const { Title } = Typography;
 
 const Producer = ({ data }: ProducerProps) => {
 	const router = useRouter();
 	const t = useTranslations('producers');
+
+	const handlePagination = (page: number) => {
+		router.push(`/producers?page=${page}`);
+	};
 
 	const handleNewProducer = () => {
 		router.push('/producers/add');
@@ -31,7 +36,20 @@ const Producer = ({ data }: ProducerProps) => {
 					{t('add')}
 				</Button>
 			</div>
-			<Table rowKey={(record) => record.id} columns={columns(t)} dataSource={data} />
+			<Table
+				rowKey={(record) => record.id}
+				columns={columns(t)}
+				dataSource={data.items}
+				pagination={{
+					current: data.currentPage + 1,
+					total: data.totalItems,
+					defaultPageSize: PAGE_SIZE,
+					showSizeChanger: false,
+					onChange: (page) => {
+						handlePagination(page);
+					}
+				}}
+			/>
 		</div>
 	);
 };
