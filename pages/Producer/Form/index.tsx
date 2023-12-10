@@ -8,6 +8,7 @@ import { Col, Row, Form, Input, Button, Select, Typography, InputNumber } from '
 
 import styles from './styles.module.scss';
 import { initialValues } from './constants';
+import Breadcrumb from '~/components/commons/Breadcrumb';
 import { ProducerFormProps } from '~/pages/Producer/Form/types';
 import { useMessage } from '~/app/usecase/contexts/MessageContext';
 import { ProducerRequest } from '~/app/domain/request/ProducerRequest';
@@ -85,6 +86,7 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 
 	return (
 		<div className={styles.container}>
+			<Breadcrumb label={t('breadcrumb')} />
 			<Title level={2}>{title}</Title>
 			<Form
 				form={form}
