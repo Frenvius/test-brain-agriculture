@@ -1,10 +1,9 @@
-import type { ColumnsType } from 'antd/es/table';
-
 import React from 'react';
+import { ColumnsType } from 'antd/lib/table';
 
-import CropTag from '~/pages/Producer/CropTag';
-import TableActions from '~/pages/Producer/TableActions';
+import CropTag from '~/components/pages/Producer/CropTag';
 import { CropResponse } from '~/app/domain/response/CropResponse';
+import TableActions from '~/components/pages/Producer/TableActions';
 import { ProducerResponse } from '~/app/domain/response/ProducerResponse';
 
 export const columns = (t: any): ColumnsType<ProducerResponse> => [

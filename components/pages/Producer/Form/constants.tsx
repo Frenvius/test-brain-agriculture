@@ -1,4 +1,4 @@
-import { ProducerFormState } from '~/pages/Producer/Form/types';
+import { ProducerFormState } from '~/components/pages/Producer/Form/types';
 
 export const initialValues: ProducerFormState = {
 	name: '',

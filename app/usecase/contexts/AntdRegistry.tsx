@@ -1,6 +1,6 @@
 'use client';
 
-import type Entity from '@ant-design/cssinjs/es/Cache';
+import type Entity from '@ant-design/cssinjs/lib/Cache';
 
 import React from 'react';
 import { useServerInsertedHTML } from 'next/navigation';

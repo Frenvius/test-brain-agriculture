@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
 import { Props } from '../types';
-import ProducerForm from '~/pages/Producer/Form';
+import ProducerForm from '~/components/pages/Producer/Form';
 import { farmService } from '~/app/usecase/service/farm/service';
 import { producerService } from '~/app/usecase/service/producer/service';
 import { producerConverter } from '~/app/usecase/converter/producer.converter';

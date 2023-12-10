@@ -1,4 +1,4 @@
-import Dashboard from '~/pages/Dashboard';
+import Dashboard from '../../../components/pages/Dashboard';
 import { dashboardService } from '~/app/usecase/service/dashboard/service';
 
 const DashboardPage = async () => {

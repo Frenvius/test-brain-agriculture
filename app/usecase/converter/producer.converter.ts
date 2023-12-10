@@ -1,7 +1,7 @@
-import { ProducerFormState } from '~/pages/Producer/Form/types';
 import { CropResponse } from '~/app/domain/response/CropResponse';
 import { ProducerRequest } from '~/app/domain/request/ProducerRequest';
 import { ProducerResponse } from '~/app/domain/response/ProducerResponse';
+import { ProducerFormState } from '~/components/pages/Producer/Form/types';
 
 class ProducerConverter {
 	toEntity(request: ProducerFormState, cropList: CropResponse[]): ProducerRequest {

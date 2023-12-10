@@ -9,13 +9,13 @@ import { Form, Input, Button, Select, Typography, InputNumber } from 'antd';
 import styles from './styles.module.scss';
 import { initialValues } from './constants';
 import Breadcrumb from '~/components/commons/Breadcrumb';
-import { ProducerFormProps } from '~/pages/Producer/Form/types';
 import { useMessage } from '~/app/usecase/contexts/MessageContext';
 import { ProducerRequest } from '~/app/domain/request/ProducerRequest';
-import { validateTaxDocument } from '~/pages/Producer/Form/validations';
 import { producerService } from '~/app/usecase/service/producer/service';
 import TaxDocumentInput from '~/components/commons/form/TaxDocumentInput';
+import { ProducerFormProps } from '~/components/pages/Producer/Form/types';
 import { producerConverter } from '~/app/usecase/converter/producer.converter';
+import { validateTaxDocument } from '~/components/pages/Producer/Form/validations';
 
 const { Title } = Typography;
 

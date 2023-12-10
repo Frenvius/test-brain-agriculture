@@ -1,13 +1,16 @@
 'use client';
 
 import React from 'react';
+import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
-import { Pie, Column } from '@ant-design/charts';
 import { Col, Row, Card, Typography } from 'antd';
 
 import styles from './styles.module.scss';
 import { DashboardResponse } from '~/app/domain/response/DashboardResponse';
 import { dashboardConverter } from '~/app/usecase/converter/dashboard.converter';
+
+const Column = dynamic(() => import('@ant-design/charts').then(({ Column }) => Column), { ssr: false });
+const Pie = dynamic(() => import('@ant-design/charts').then(({ Pie }) => Pie), { ssr: false });
 
 const { Text, Title } = Typography;
 
