@@ -163,7 +163,7 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 					</Select>
 				</Form.Item>
 
-				<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+				<Form.Item wrapperCol={{ offset: 5 }}>
 					<Button type="primary" htmlType="submit">
 						{t('fields.submit')}
 					</Button>
