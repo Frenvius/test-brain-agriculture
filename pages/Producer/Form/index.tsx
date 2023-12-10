@@ -4,7 +4,7 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { RuleObject } from 'rc-field-form/lib/interface';
-import { Col, Row, Form, Input, Button, Select, InputNumber } from 'antd';
+import { Col, Row, Form, Input, Button, Select, Typography, InputNumber } from 'antd';
 
 import styles from './styles.module.scss';
 import { initialValues } from './constants';
@@ -15,6 +15,8 @@ import { validateTaxDocument } from '~/pages/Producer/Form/validations';
 import { producerService } from '~/app/usecase/service/producer/service';
 import TaxDocumentInput from '~/components/commons/form/TaxDocumentInput';
 import { producerConverter } from '~/app/usecase/converter/producer.converter';
+
+const { Title } = Typography;
 
 const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 	const { Option } = Select;
@@ -83,7 +85,7 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 
 	return (
 		<div className={styles.container}>
-			<h1>{title}</h1>
+			<Title level={2}>{title}</Title>
 			<Form
 				form={form}
 				name="producer"
