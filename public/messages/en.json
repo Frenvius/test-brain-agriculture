@@ -12,6 +12,15 @@
 			}
 		}
 	},
+	"dashboard": {
+		"totalFarms": "Total Farms",
+		"totalAcres": "Total Acres",
+		"stateChartTitle": "State Farm Variety",
+		"cropChartTitle": "Crop Variety Across Farms",
+		"areaUsageChartTitle": "Area Usage Across Farms",
+		"usefulArea": "Arable Area (ha)",
+		"vegetationArea": "Vegetation Area (ha)"
+	},
 	"producers": {
 		"breadcrumb": "Back to Dashboard",
 		"title": "Producers",

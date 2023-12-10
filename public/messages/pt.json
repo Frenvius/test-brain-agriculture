@@ -12,6 +12,15 @@
 			}
 		}
 	},
+	"dashboard": {
+		"totalFarms": "Total de Fazendas",
+		"totalAcres": "Total de Hectares",
+		"stateChartTitle": "Localização das Fazendas",
+		"cropChartTitle": "Variedade de culturas",
+		"areaUsageChartTitle": "Utilização de área",
+		"usefulArea": "Área Útil (ha)",
+		"vegetationArea": "Área de Vegetação (ha)"
+	},
 	"producers": {
 		"breadcrumb": "Voltar para o Dashboard",
 		"title": "Produtores",

@@ -1,7 +1,9 @@
 import Dashboard from '~/pages/Dashboard';
+import { dashboardService } from '~/app/usecase/service/dashboard/service';
 
-const DashboardPage = () => {
-	return <Dashboard />;
+const DashboardPage = async () => {
+	const data = await dashboardService.get();
+	return <Dashboard data={data} />;
 };
 
 export default DashboardPage;
