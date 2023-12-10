@@ -6,6 +6,7 @@ import { NextIntlClientProvider } from 'next-intl';
 
 import '~/styles/globals.scss';
 import Layout from '~/components/commons/Layout';
+import { MessageProvider } from '~/app/usecase/contexts/MessageContext';
 import StyledComponentsRegistry from '~/app/usecase/contexts/AntdRegistry';
 
 const locales = ['en', 'pt'];
@@ -27,7 +28,9 @@ export default async function RootLayout({ children, params: { locale } }: { chi
 		<html lang={locale}>
 			<NextIntlClientProvider locale={locale} messages={messages}>
 				<StyledComponentsRegistry>
-					<Layout>{children}</Layout>
+					<Layout>
+						<MessageProvider>{children}</MessageProvider>
+					</Layout>
 				</StyledComponentsRegistry>
 			</NextIntlClientProvider>
 		</html>

@@ -19,3 +19,9 @@ a {
 	color: inherit;
 	text-decoration: none;
 }
+
+.ant-message {
+	position: absolute;
+	bottom: 40px !important;
+	top: unset !important;
+}
