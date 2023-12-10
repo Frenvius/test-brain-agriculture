@@ -16,6 +16,7 @@
 		"breadcrumb": "Back to Dashboard",
 		"title": "Producers",
 		"add": "Add Producer",
+		"edit": "Edit Producer",
 		"list": {
 			"name": "Name",
 			"farmName": "Farm Name",
@@ -29,6 +30,45 @@
 			"actions": {
 				"edit": "Edit",
 				"delete": "Delete"
+			}
+		},
+		"form": {
+			"fields": {
+				"name": "Name",
+				"taxDocument": "Tax Document",
+				"farmName": "Farm Name",
+				"city": "City",
+				"state": "State",
+				"area": "Total Area (ha)",
+				"usefulArea": "Arable Area (ha)",
+				"vegetationArea": "Vegetation Area (ha)",
+				"plantedCrops": "Planted Crops",
+				"submit": "Save",
+				"cancel": "Cancel"
+			},
+			"placeholders": {
+				"name": "Producer's Name",
+				"taxDocument": "Producer's CPF or CNPJ",
+				"farmName": "Farm Name",
+				"city": "City",
+				"state": "State",
+				"area": "Total Farm Area in Hectares",
+				"usefulArea": "Arable Area in Hectares",
+				"vegetationArea": "Vegetation Area in Hectares",
+				"plantedCrops": "e.g., soybeans, corn, cotton, coffee, sugarcane"
+			},
+			"validations": {
+				"required": "Required Field",
+				"taxDocument": {
+					"required": "CPF/CNPJ is required",
+					"invalidCPF": "Invalid CPF",
+					"invalidCNPJ": "Invalid CNPJ"
+				},
+				"area": "Arable and vegetation areas must not exceed total farm area.",
+				"areaSize": "Area must be greater than 10 acres.",
+				"success": "Producer saved successfully.",
+				"updated": "Producer updated successfully.",
+				"error": "Error saving producer."
 			}
 		},
 		"crops": {

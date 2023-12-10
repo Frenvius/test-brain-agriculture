@@ -16,6 +16,7 @@
 		"breadcrumb": "Voltar para o Dashboard",
 		"title": "Produtores",
 		"add": "Adicionar Produtor",
+		"edit": "Editar Produtor",
 		"list": {
 			"name": "Nome",
 			"farmName": "Nome da Fazenda",
@@ -29,6 +30,45 @@
 			"actions": {
 				"edit": "Editar",
 				"delete": "Excluir"
+			}
+		},
+		"form": {
+			"fields": {
+				"name": "Nome",
+				"taxDocument": "CPF/CNPJ",
+				"farmName": "Nome da Fazenda",
+				"city": "Cidade",
+				"state": "Estado",
+				"area": "Área (ha)",
+				"usefulArea": "Área Útil (ha)",
+				"vegetationArea": "Área de Vegetação (ha)",
+				"plantedCrops": "Culturas Plantadas",
+				"submit": "Salvar",
+				"cancel": "Cancelar"
+			},
+			"placeholders": {
+				"name": "Nome do produtor",
+				"taxDocument": "CPF ou CNPJ do produtor",
+				"farmName": "Nome da Fazenda",
+				"city": "Cidade",
+				"state": "Estado",
+				"area": "Área total em hectares da fazenda",
+				"usefulArea": "Área agricultável em hectares",
+				"vegetationArea": "Área de vegetação em hectares",
+				"plantedCrops": "ex: soja, milho, algodão, café, cana-de-açúcar"
+			},
+			"messages": {
+				"required": "Campo obrigatório",
+				"taxDocument": {
+					"required": "CPF/CNPJ é obrigatório",
+					"invalidCPF": "CPF inválido",
+					"invalidCNPJ": "CNPJ inválido"
+				},
+				"area": "As áreas úteis e de vegetação não devem exceder a área total",
+				"areaSize": "Área deve ser maior que 10 hectares",
+				"success": "Produtor salvo com sucesso",
+				"updated": "Produtor atualizado com sucesso",
+				"error": "Erro ao salvar produtor"
 			}
 		},
 		"crops": {

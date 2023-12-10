@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.18.1",
+    "@types/react-input-mask": "3.0.5",
     "antd": "^5.12.1",
     "next": "14.0.3",
     "next-intl": "^3.3.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-input-mask": "3.0.0-alpha.2",
     "sass": "^1.69.5"
   },
   "devDependencies": {

@@ -1,3 +1,5 @@
+import { CropResponse } from '~/app/domain/response/CropResponse';
+
 export interface FarmResponse {
 	id: number;
 	name: string;
@@ -6,5 +8,5 @@ export interface FarmResponse {
 	area: number;
 	usefulArea: number;
 	vegetationArea: number;
-	plantedCrops: string[];
+	plantedCrops: CropResponse[];
 }

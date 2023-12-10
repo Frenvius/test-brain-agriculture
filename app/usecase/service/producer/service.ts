@@ -7,9 +7,17 @@ class Service {
 	private readonly basePath = '/producers';
 	private _serverClient = new HttpClient(process.env.SERVER_URL!);
 
-	public async get(id: number): Promise<PaginatedResponse<ProducerResponse>> {
-		const query = { pageSize: -1 };
-		return await this._serverClient.post(`${this.basePath}/${id}`, query);
+	public async get(id: string): Promise<ProducerResponse> {
+		return await this._serverClient.get(`${this.basePath}/${id}`, 'no-store');
+	}
+
+	public async create(request: any): Promise<PaginatedResponse<ProducerResponse>> {
+		return await this._serverClient.post(`${this.basePath}`, request);
+	}
+
+	public async update(id: number, request: any): Promise<PaginatedResponse<ProducerResponse>> {
+		const body = { id, ...request };
+		return await this._serverClient.put(`${this.basePath}`, body);
 	}
 
 	public async search(query?: {}, page?: string): Promise<PaginatedResponse<ProducerResponse>> {
