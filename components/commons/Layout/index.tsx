@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import { Card, Flex, Divider } from 'antd';
 import { useTranslations } from 'next-intl';
-import { Col, Row, Card, Divider } from 'antd';
 import { UpOutlined, DownOutlined } from '@ant-design/icons';
 
 import MenuItem from './MenuItem';
@@ -12,8 +12,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 	const t = useTranslations('menu');
 	return (
 		<body>
-			<Row className={styles.container}>
-				<Col span={3} className={styles.sidebar}>
+			<Flex className={styles.container}>
+				<div className={styles.sidebar} style={{ minWidth: '220px' }}>
 					<div className={styles.logo}>
 						<Image src="/assets/img/logo.svg" alt="Brain Agriculture Logo" width={40} height={40} />
 						Brain Agriculture
@@ -39,13 +39,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 							</div>
 						</div>
 					</div>
-				</Col>
-				<Col span={21}>
-					<Card className={styles.content} bordered={false}>
-						{children}
-					</Card>
-				</Col>
-			</Row>
+				</div>
+				<div className={styles.content}>
+					<Card bordered={false}>{children}</Card>
+				</div>
+			</Flex>
 		</body>
 	);
 };

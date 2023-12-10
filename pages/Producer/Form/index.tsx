@@ -4,7 +4,7 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { RuleObject } from 'rc-field-form/lib/interface';
-import { Col, Row, Form, Input, Button, Select, Typography, InputNumber } from 'antd';
+import { Form, Input, Button, Select, Typography, InputNumber } from 'antd';
 
 import styles from './styles.module.scss';
 import { initialValues } from './constants';
@@ -85,7 +85,7 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 			<Form
 				form={form}
 				name="producer"
-				labelCol={{ span: 5 }}
+				labelCol={{ span: 7 }}
 				wrapperCol={{ span: 14 }}
 				style={{ maxWidth: '50%' }}
 				initialValues={data || initialValues}
@@ -93,10 +93,6 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 				onFinishFailed={onFinishFailed}
 				autoComplete="off"
 			>
-				<Row gutter={16}>
-					<Col span={12}></Col>
-					<Col span={12}></Col>
-				</Row>
 				<Form.Item<ProducerRequest>
 					label={t('fields.name')}
 					name="name"
@@ -161,7 +157,7 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 					</Select>
 				</Form.Item>
 
-				<Form.Item wrapperCol={{ offset: 5 }}>
+				<Form.Item wrapperCol={{ offset: 7 }}>
 					<Button type="primary" htmlType="submit">
 						{t('fields.submit')}
 					</Button>
