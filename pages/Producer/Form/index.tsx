@@ -44,17 +44,11 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 	};
 
 	const onFinishFailed = async () => {
-		msg.open({
-			type: 'error',
-			content: t('messages.error')
-		});
+		msg.error(t('messages.error'));
 	};
 
 	const finish = async (message: string) => {
-		msg.open({
-			type: 'success',
-			content: message
-		});
+		msg.success(message);
 		router.refresh();
 		router.push('/producers');
 	};
