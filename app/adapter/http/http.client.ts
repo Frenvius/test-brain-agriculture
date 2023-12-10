@@ -18,8 +18,8 @@ export class HttpClient {
 		return { method, headers, body: JSON.stringify(body), cache };
 	}
 
-	async get(path: string) {
-		const requestOptions = this.getOptions('GET');
+	async get(path: string, cache?: RequestCache) {
+		const requestOptions = this.getOptions('GET', undefined, cache);
 		return fetch(this.getUrl(path), requestOptions).then(this.handleResponse);
 	}
 
