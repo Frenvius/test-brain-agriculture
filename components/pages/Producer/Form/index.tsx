@@ -148,7 +148,7 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 					name="plantedCrops"
 					rules={[{ required: true, message: t('messages.required') }]}
 				>
-					<Select mode="multiple" style={{ width: '100%' }} placeholder={t('placeholders.plantedCrops')}>
+					<Select virtual={false} mode="multiple" style={{ width: '100%' }} placeholder={t('placeholders.plantedCrops')}>
 						{cropList.map((item) => (
 							<Option key={item.id} value={item.label}>
 								{cropTranslation(item.label.toLowerCase())}

@@ -9,7 +9,9 @@ import styles from './styles.module.scss';
 import { DashboardResponse } from '~/app/domain/response/DashboardResponse';
 import { dashboardConverter } from '~/app/usecase/converter/dashboard.converter';
 
+/* istanbul ignore next */
 const Column = dynamic(() => import('@ant-design/charts').then(({ Column }) => Column), { ssr: false });
+/* istanbul ignore next */
 const Pie = dynamic(() => import('@ant-design/charts').then(({ Pie }) => Pie), { ssr: false });
 
 const { Text, Title } = Typography;
