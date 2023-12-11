@@ -19,6 +19,7 @@ const MenuItem = ({ href, icon, label }: MenuItemProps) => {
 
 	const handlePageChange = (link: string) => {
 		router.push(link);
+		router.refresh();
 	};
 
 	return (

@@ -6,7 +6,7 @@ class Service {
 	private _serverClient = new HttpClient(process.env.SERVER_URL!);
 
 	public async get(): Promise<DashboardResponse> {
-		return await this._serverClient.get(this.basePath);
+		return await this._serverClient.get(this.basePath, 'no-store');
 	}
 }
 

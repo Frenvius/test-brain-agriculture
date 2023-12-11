@@ -19,10 +19,12 @@ const Producer = ({ data }: ProducerProps) => {
 
 	const handlePagination = (page: number) => {
 		router.push(`/producers?page=${page}`);
+		router.refresh();
 	};
 
 	const handleNewProducer = () => {
 		router.push('/producers/add');
+		router.refresh();
 	};
 
 	return (
