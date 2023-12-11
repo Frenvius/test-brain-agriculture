@@ -54,8 +54,8 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 	};
 
 	const validateCPF: RuleObject['validator'] = () => {
-		const cleanedInput = form.getFieldValue('taxDocument').replace(/\D/g, '');
-		const isCNPJ = cleanedInput.length > 11;
+		const cleanedInput = form.getFieldValue('taxDocument')?.replace(/\D/g, '');
+		const isCNPJ = cleanedInput?.length > 11;
 		if (!cleanedInput || validateTaxDocument(cleanedInput)) {
 			return Promise.resolve();
 		}
@@ -158,7 +158,7 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 				</Form.Item>
 
 				<Form.Item wrapperCol={{ offset: 7 }}>
-					<Button type="primary" htmlType="submit">
+					<Button type="primary" data-testid="submit" htmlType="submit">
 						{t('fields.submit')}
 					</Button>
 				</Form.Item>

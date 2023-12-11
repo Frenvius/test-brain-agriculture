@@ -9,7 +9,7 @@ const CpfCnpjInput: React.FC<TaxDocumentInputProps> = ({ children, ...props }) =
 	const cnpjMask = '99.999.999/9999-99';
 
 	const cleanValue = value && value.replace(/\D/g, '');
-	const mask = cleanValue.slice(8, 11) !== '000' ? cpfMask : cnpjMask;
+	const mask = cleanValue?.slice(8, 11) !== '000' ? cpfMask : cnpjMask;
 
 	return (
 		<ReactInputMask mask={mask} value={value} onChange={onChange}>

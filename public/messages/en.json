@@ -74,7 +74,7 @@
 				"vegetationArea": "Vegetation Area in Hectares",
 				"plantedCrops": "e.g., soybeans, corn, cotton, coffee, sugarcane"
 			},
-			"validations": {
+			"messages": {
 				"required": "Required Field",
 				"taxDocument": {
 					"required": "CPF/CNPJ is required",
