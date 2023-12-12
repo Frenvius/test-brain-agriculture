@@ -2,6 +2,7 @@
 	"menu": {
 		"items": {
 			"dashboard": "Dashboard",
+			"dashboardPie": "Dashboard Pie",
 			"producers": "Producers"
 		},
 		"userData": {

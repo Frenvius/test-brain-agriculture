@@ -14,7 +14,7 @@ const MenuItem = ({ href, icon, label }: MenuItemProps) => {
 	const t = useTranslations('menu');
 
 	const isActive = () => {
-		return pathname?.includes(href);
+		return pathname === href;
 	};
 
 	const handlePageChange = (link: string) => {
