@@ -73,11 +73,12 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 		const cleanedInput = form.getFieldValue('taxDocument')?.replace(/\D/g, '');
 		const isCNPJ = cleanedInput?.length > 11;
 		const complete = cleanedInput?.length === 11 || cleanedInput?.length === 14;
-		if (complete) {
+		const isValid = validateTaxDocument(cleanedInput!);
+		if (complete && isValid) {
 			const response = await producerService.search({ query: { taxDocument: cleanedInput } });
 			return response.items?.length > 0 ? Promise.reject(new Error(t('messages.taxDocument.alreadyExists'))) : Promise.resolve();
 		}
-		if (!cleanedInput || validateTaxDocument(cleanedInput)) return Promise.resolve();
+		if (!cleanedInput || isValid) return Promise.resolve();
 		return Promise.reject(new Error(isCNPJ ? t('messages.taxDocument.invalidCNPJ') : t('messages.taxDocument.invalidCPF')));
 	};
 
