@@ -18,6 +18,7 @@ const TableActions = ({ data }: { data: ProducerResponse }) => {
 
 	const handleEdit = () => {
 		router.push(`/producers/edit/${data.id}`);
+		router.refresh();
 	};
 
 	const handleDelete = async () => {

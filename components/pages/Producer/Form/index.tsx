@@ -30,6 +30,13 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 	const cropTranslation = useTranslations('producers.crops');
 	const [selectedState, setSelectedState] = React.useState(data ? data.state : '');
 
+	React.useEffect(() => {
+		if (data) {
+			handleStateChange(data.state!);
+			form.setFieldsValue({ city: data.city });
+		}
+	}, []);
+
 	const onFinish = async (values: any) => {
 		if (!data) {
 			const request = producerConverter.toEntity(values, cropList);
