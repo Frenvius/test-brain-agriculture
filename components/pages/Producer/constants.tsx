@@ -49,18 +49,21 @@ export const columns = (t: any): ColumnsType<ProducerResponse> => [
 				title: t('list.totalArea'),
 				dataIndex: ['farm', 'area'],
 				width: 80,
+				align: 'center',
 				key: 'totalArea'
 			},
 			{
 				title: t('list.usefulArea'),
 				dataIndex: ['farm', 'usefulArea'],
 				width: 80,
+				align: 'center',
 				key: 'arableArea'
 			},
 			{
 				title: t('list.vegetationArea'),
 				dataIndex: ['farm', 'vegetationArea'],
 				width: 80,
+				align: 'center',
 				key: 'vegetationArea'
 			}
 		]
