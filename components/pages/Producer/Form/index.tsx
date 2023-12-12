@@ -70,7 +70,7 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 		form.setFieldsValue({ city: undefined });
 	};
 
-	const validateCPF = () => validateCPFString(form, t);
+	const validateCPF = () => validateCPFString(data, form, t);
 	const validateAreas: RuleObject['validator'] = () => validateAreaInput(form, t);
 	const areaSize: RuleObject = { type: 'number', min: 5, max: 10000, message: t('messages.areaSize', { min: 5, max: 10000 }) };
 

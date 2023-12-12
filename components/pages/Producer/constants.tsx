@@ -1,44 +1,32 @@
 import React from 'react';
-import { Typography } from 'antd';
 import { ColumnsType } from 'antd/lib/table';
 
 import CropTags from '~/components/pages/Producer/CropTag';
 import TableActions from '~/components/pages/Producer/TableActions';
 import { ProducerResponse } from '~/app/domain/response/ProducerResponse';
 
-const { Text } = Typography;
-
 export const columns = (t: any): ColumnsType<ProducerResponse> => [
 	{
 		title: t('list.name'),
 		dataIndex: 'name',
 		key: 'name',
-		render: (name) => (
-			<Text style={{ maxWidth: '100%' }} ellipsis={true}>
-				{name}
-			</Text>
-		)
+		ellipsis: true
 	},
 	{
 		title: t('list.farmName'),
 		dataIndex: ['farm', 'name'],
 		key: 'farmName',
-		render: (farmName) => (
-			<Text style={{ maxWidth: '100%' }} ellipsis={true}>
-				{farmName}
-			</Text>
-		)
+		ellipsis: true
 	},
 	{
 		title: t('list.state'),
 		dataIndex: ['farm', 'state'],
-		width: 180,
+		ellipsis: true,
 		key: 'state'
 	},
 	{
 		title: t('list.city'),
 		dataIndex: ['farm', 'city'],
-		width: 180,
 		key: 'city'
 	},
 	{
@@ -72,7 +60,7 @@ export const columns = (t: any): ColumnsType<ProducerResponse> => [
 		title: t('list.plantedCrops'),
 		dataIndex: ['farm', 'plantedCrops'],
 		key: 'plantedCrops',
-		width: 250,
+		width: 220,
 		render: (crops) => <CropTags crops={crops} />
 	},
 	{

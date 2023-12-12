@@ -14,15 +14,17 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 		<body>
 			<Flex className={styles.container}>
 				<div className={styles.sidebar} style={{ minWidth: '220px' }}>
-					<div className={styles.logo}>
-						<Image src="/assets/img/logo.svg" alt="Brain Agriculture Logo" width={40} height={40} />
-						Brain Agriculture
-					</div>
-					<Divider className={styles.divider} />
-					<div className={styles.menu}>
-						{menuItems.map((item, index) => (
-							<MenuItem key={index} href={item.href} icon={item.icon} label={item.label} />
-						))}
+					<div className={styles.menuBlock}>
+						<div className={styles.logo}>
+							<Image src="/assets/img/logo.svg" alt="Brain Agriculture Logo" width={40} height={40} />
+							Brain Agriculture
+						</div>
+						<Divider className={styles.divider} />
+						<div className={styles.menu}>
+							{menuItems.map((item, index) => (
+								<MenuItem key={index} href={item.href} icon={item.icon} label={item.label} />
+							))}
+						</div>
 					</div>
 					<div className={styles.freeArea}>
 						<div className={styles.mockUser}>

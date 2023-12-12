@@ -1,17 +1,18 @@
 import { FormInstance } from 'antd';
 
 import { producerService } from '~/app/usecase/service/producer/service';
+import { ProducerFormState } from '~/components/pages/Producer/Form/types';
 
 export const normalizeString = (value: string) => {
 	return value.replace(/[^a-z à-ú]/gi, '');
 };
 
-export const validateCPFString = async (form: FormInstance, t: any) => {
+export const validateCPFString = async (data: ProducerFormState | null, form: FormInstance, t: any) => {
 	const cleanedInput = form.getFieldValue('taxDocument')?.replace(/\D/g, '');
 	const isCNPJ = cleanedInput?.length > 11;
 	const complete = cleanedInput?.length === 11 || cleanedInput?.length === 14;
 	const isValid = validateTaxDocument(cleanedInput!);
-	if (complete && isValid) {
+	if (!data && complete && isValid) {
 		const response = await producerService.search({ query: { taxDocument: cleanedInput } });
 		return response.items?.length > 0 ? Promise.reject(new Error(t('messages.taxDocument.alreadyExists'))) : Promise.resolve();
 	}
