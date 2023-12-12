@@ -3,9 +3,9 @@ import { render, screen, cleanup } from '@testing-library/react';
 
 import '~/__mock__/matchMedia.mock';
 import Translation from '~/__mock__/Translation';
-import Dashboard from '~/components/pages/Dashboard/index';
+import Dashboard from '~/components/pages/Dashboard-2/index';
 
-describe('Dashboard', () => {
+describe('Dashboard2', () => {
 	const mock = {
 		totalFarms: 50,
 		totalAcres: 27762,
