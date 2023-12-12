@@ -31,9 +31,10 @@
 			"farmName": "Farm Name",
 			"city": "City",
 			"state": "State",
-			"area": "Total Area (ha)",
-			"usefulArea": "Arable Area (ha)",
-			"vegetationArea": "Vegetation Area (ha)",
+			"area": "Area (ha)",
+			"totalArea": "Total",
+			"usefulArea": "Arable",
+			"vegetationArea": "Plants",
 			"plantedCrops": "Planted Crops",
 			"action": "Actions",
 			"actions": {

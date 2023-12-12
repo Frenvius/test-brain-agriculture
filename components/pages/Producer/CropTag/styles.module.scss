@@ -1,4 +1,13 @@
 .container {
+	gap: 8px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+
+	span[class*="ant-tag"] {
+		margin: 0;
+	}
+
 	.crop-soy {
 		background-color: #e8dcd3;
 		border: 1px solid darken(#e8dcd3, 20%);

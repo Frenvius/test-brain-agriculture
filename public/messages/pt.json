@@ -32,8 +32,9 @@
 			"city": "Cidade",
 			"state": "Estado",
 			"area": "Área (ha)",
-			"usefulArea": "Área Útil (ha)",
-			"vegetationArea": "Área de Vegetação (ha)",
+			"totalArea": "Total",
+			"usefulArea": "Útil",
+			"vegetationArea": "Plantio",
 			"plantedCrops": "Culturas Plantadas",
 			"action": "Ações",
 			"actions": {

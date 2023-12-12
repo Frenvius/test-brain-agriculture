@@ -25,7 +25,8 @@ class Service {
 		const body = {
 			pageSize: PAGE_SIZE,
 			pageNumber: pageNumber - 1,
-			...query
+			...query,
+			orderBy: [{ id: 'desc' }]
 		};
 		return await this._serverClient.post(`${this.basePath}/search`, body, 'no-store');
 	}

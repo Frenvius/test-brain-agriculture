@@ -42,6 +42,8 @@ const Producer = ({ data }: ProducerProps) => {
 				rowKey={(record) => record.id}
 				columns={columns(t)}
 				dataSource={data.items}
+				size="middle"
+				tableLayout="fixed"
 				pagination={{
 					current: data.currentPage + 1,
 					total: data.totalItems,

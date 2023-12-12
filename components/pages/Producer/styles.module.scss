@@ -9,4 +9,11 @@
 			margin-bottom: 6px;
 		}
 	}
+
+	thead[class="ant-table-thead"] {
+		th[class*="areaHeader"] {
+			height: 10px;
+			padding: 8px 8px 0 !important;
+		}
+	}
 }
