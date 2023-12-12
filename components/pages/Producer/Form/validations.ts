@@ -1,3 +1,38 @@
+import { FormInstance } from 'antd';
+
+import { producerService } from '~/app/usecase/service/producer/service';
+
+export const normalizeString = (value: string) => {
+	return value.replace(/[^a-z à-ú]/gi, '');
+};
+
+export const validateCPFString = async (form: FormInstance, t: any) => {
+	const cleanedInput = form.getFieldValue('taxDocument')?.replace(/\D/g, '');
+	const isCNPJ = cleanedInput?.length > 11;
+	const complete = cleanedInput?.length === 11 || cleanedInput?.length === 14;
+	const isValid = validateTaxDocument(cleanedInput!);
+	if (complete && isValid) {
+		const response = await producerService.search({ query: { taxDocument: cleanedInput } });
+		return response.items?.length > 0 ? Promise.reject(new Error(t('messages.taxDocument.alreadyExists'))) : Promise.resolve();
+	}
+	if (!cleanedInput || isValid) return Promise.resolve();
+	return Promise.reject(new Error(isCNPJ ? t('messages.taxDocument.invalidCNPJ') : t('messages.taxDocument.invalidCPF')));
+};
+
+export const validateAreaInput = (form: FormInstance, t: any) => {
+	const totalArea = form.getFieldValue('area');
+	const arableArea = form.getFieldValue('usefulArea');
+	const vegetationArea = form.getFieldValue('vegetationArea');
+
+	if (totalArea && arableArea && vegetationArea) {
+		const total = Number(arableArea) + Number(vegetationArea);
+		if (total > Number(totalArea)) {
+			return Promise.reject(new Error(t('messages.area')));
+		}
+	}
+	return Promise.resolve();
+};
+
 export const validateTaxDocument = (input: string): boolean => {
 	if (input.length > 11) return validateCNPJ(input);
 

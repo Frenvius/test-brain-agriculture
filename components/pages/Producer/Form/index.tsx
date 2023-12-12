@@ -9,13 +9,14 @@ import { Form, Input, Button, Select, Typography, InputNumber } from 'antd';
 import styles from './styles.module.scss';
 import { stateData, initialValues } from './constants';
 import Breadcrumb from '~/components/commons/Breadcrumb';
+import { sanitizeString } from '~/app/usecase/util/stringUtils';
 import { useMessage } from '~/app/usecase/contexts/MessageContext';
 import { ProducerRequest } from '~/app/domain/request/ProducerRequest';
 import { producerService } from '~/app/usecase/service/producer/service';
 import TaxDocumentInput from '~/components/commons/form/TaxDocumentInput';
 import { ProducerFormProps } from '~/components/pages/Producer/Form/types';
 import { producerConverter } from '~/app/usecase/converter/producer.converter';
-import { validateTaxDocument } from '~/components/pages/Producer/Form/validations';
+import { normalizeString, validateAreaInput, validateCPFString } from '~/components/pages/Producer/Form/validations';
 
 const { Title } = Typography;
 
@@ -69,41 +70,9 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 		form.setFieldsValue({ city: undefined });
 	};
 
-	const validateCPF: RuleObject['validator'] = async () => {
-		const cleanedInput = form.getFieldValue('taxDocument')?.replace(/\D/g, '');
-		const isCNPJ = cleanedInput?.length > 11;
-		const complete = cleanedInput?.length === 11 || cleanedInput?.length === 14;
-		const isValid = validateTaxDocument(cleanedInput!);
-		if (complete && isValid) {
-			const response = await producerService.search({ query: { taxDocument: cleanedInput } });
-			return response.items?.length > 0 ? Promise.reject(new Error(t('messages.taxDocument.alreadyExists'))) : Promise.resolve();
-		}
-		if (!cleanedInput || isValid) return Promise.resolve();
-		return Promise.reject(new Error(isCNPJ ? t('messages.taxDocument.invalidCNPJ') : t('messages.taxDocument.invalidCPF')));
-	};
-
-	const validateAreas: RuleObject['validator'] = () => {
-		const totalArea = form.getFieldValue('area');
-		const arableArea = form.getFieldValue('usefulArea');
-		const vegetationArea = form.getFieldValue('vegetationArea');
-
-		if (totalArea && arableArea && vegetationArea) {
-			const total = Number(arableArea) + Number(vegetationArea);
-			if (total > Number(totalArea)) {
-				return Promise.reject(new Error(t('messages.area')));
-			}
-		}
-		return Promise.resolve();
-	};
-
+	const validateCPF = () => validateCPFString(form, t);
+	const validateAreas: RuleObject['validator'] = () => validateAreaInput(form, t);
 	const areaSize: RuleObject = { type: 'number', min: 5, max: 10000, message: t('messages.areaSize', { min: 5, max: 10000 }) };
-
-	const strForSearch = (str: string) => {
-		return str
-			.normalize('NFD')
-			.replace(/[\u0300-\u036f]/g, '')
-			.toLowerCase();
-	};
 
 	return (
 		<div className={styles.container}>
@@ -123,6 +92,7 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 				<Form.Item<ProducerRequest>
 					label={t('fields.name')}
 					name="name"
+					normalize={normalizeString}
 					rules={[
 						{ required: true, message: t('messages.required') },
 						{ max: 100, message: t('messages.max', { max: 100 }) }
@@ -144,6 +114,7 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 				<Form.Item
 					label={t('fields.farmName')}
 					name="farmName"
+					normalize={normalizeString}
 					rules={[
 						{ required: true, message: t('messages.required') },
 						{ max: 100, message: t('messages.max', { max: 100 }) }
@@ -161,7 +132,7 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 						onChange={handleStateChange}
 						placeholder={t('placeholders.state')}
 						filterOption={(input, option) => {
-							return strForSearch(option?.label!).includes(strForSearch(input));
+							return sanitizeString(option?.label!).includes(sanitizeString(input));
 						}}
 					/>
 				</Form.Item>
@@ -176,7 +147,7 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 						fieldNames={{ label: 'label', value: 'label' }}
 						options={cities.map((city) => ({ label: city }))}
 						filterOption={(input, option) => {
-							return strForSearch(option?.label!).includes(strForSearch(input));
+							return sanitizeString(option?.label!).includes(sanitizeString(input));
 						}}
 					/>
 				</Form.Item>
