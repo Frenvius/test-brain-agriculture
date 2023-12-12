@@ -72,6 +72,7 @@ export const columns = (t: any): ColumnsType<ProducerResponse> => [
 		title: t('list.plantedCrops'),
 		dataIndex: ['farm', 'plantedCrops'],
 		key: 'plantedCrops',
+		width: 250,
 		render: (crops) => <CropTags crops={crops} />
 	},
 	{
