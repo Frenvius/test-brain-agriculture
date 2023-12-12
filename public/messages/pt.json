@@ -81,7 +81,8 @@
 				"taxDocument": {
 					"required": "CPF/CNPJ é obrigatório",
 					"invalidCPF": "CPF inválido",
-					"invalidCNPJ": "CNPJ inválido"
+					"invalidCNPJ": "CNPJ inválido",
+					"alreadyExists": "Este documento já está cadastrado"
 				},
 				"area": "As áreas úteis e de vegetação não devem exceder a área total",
 				"areaSize": "Área deve ser maior que {min} e menor que {max} hectares",

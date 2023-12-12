@@ -81,7 +81,8 @@
 				"taxDocument": {
 					"required": "CPF/CNPJ is required",
 					"invalidCPF": "Invalid CPF",
-					"invalidCNPJ": "Invalid CNPJ"
+					"invalidCNPJ": "Invalid CNPJ",
+					"alreadyExists": "Document already registered"
 				},
 				"area": "Arable and vegetation areas must not exceed total farm area.",
 				"areaSize": "Area must be greater than {min} acres and less than {max} acres.",

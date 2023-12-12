@@ -3,9 +3,9 @@ import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 
 import ProducerForm from './index';
 import '~/__mock__/matchMedia.mock';
+import { initialValues } from './constants';
 import Translation from '~/__mock__/Translation';
 import { fetchMock } from '~/__mock__/fetchMock';
-import { initialValues } from '~/components/pages/Producer/Form/constants';
 
 jest.mock('next/navigation', () => ({
 	useRouter: () => ({
@@ -79,7 +79,7 @@ describe('ProducerForm', () => {
 
 		fireEvent.submit(screen.getByRole('button', { name: 'Save' }));
 
-		await waitFor(() => expect(window.fetch).toHaveBeenCalled());
+		await waitFor(() => expect(window.fetch).toHaveBeenCalledWith('http://localhost:4050/producers', expect.anything()));
 	});
 
 	it('Validade total area and arable area', async () => {
@@ -100,6 +100,22 @@ describe('ProducerForm', () => {
 		await waitFor(() =>
 			expect(screen.getAllByText('Arable and vegetation areas must not exceed total farm area.').length).toBeGreaterThan(1)
 		);
+	});
+
+	it('Validade if CPF already exists', async () => {
+		window.fetch = fetchMock({ items: [{ id: 1, taxDocument: '96760983025' }] });
+
+		render(
+			<Translation>
+				<ProducerForm data={null} title={formTitle} cropList={cropListMock} />
+			</Translation>
+		);
+
+		fireEvent.change(screen.getByPlaceholderText("Producer's CPF or CNPJ"), { target: { value: 96760983025 } });
+
+		fireEvent.submit(screen.getByRole('button', { name: 'Save' }));
+
+		await waitFor(() => expect(screen.getAllByText('Document already registered').length).toBe(1));
 	});
 
 	it('submits the form successfully when all fields are valid with CNPJ', async () => {
@@ -127,7 +143,7 @@ describe('ProducerForm', () => {
 
 		fireEvent.submit(screen.getByRole('button', { name: 'Save' }));
 
-		await waitFor(() => expect(window.fetch).toHaveBeenCalled());
+		await waitFor(() => expect(window.fetch).toHaveBeenCalledWith('http://localhost:4050/producers', expect.anything()));
 	});
 
 	it('does not submit the form when fields are invalid', async () => {
@@ -147,7 +163,7 @@ describe('ProducerForm', () => {
 
 		fireEvent.click(screen.getByText('Save'));
 
-		await waitFor(() => expect(window.fetch).not.toHaveBeenCalled());
+		await waitFor(() => expect(window.fetch).not.toHaveBeenCalledWith('http://localhost:4050/producers', expect.anything()));
 	});
 
 	it('does not submit the form when CPF are invalid', async () => {
@@ -163,7 +179,7 @@ describe('ProducerForm', () => {
 
 		fireEvent.click(screen.getByText('Save'));
 
-		await waitFor(() => expect(window.fetch).not.toHaveBeenCalled());
+		await waitFor(() => expect(window.fetch).not.toHaveBeenCalledWith('http://localhost:4050/producers', expect.anything()));
 		await waitFor(() => expect(screen.getByText('Invalid CPF')).toBeInTheDocument());
 	});
 
@@ -181,6 +197,7 @@ describe('ProducerForm', () => {
 
 		fireEvent.click(screen.getByText('Save'));
 
-		await waitFor(() => expect(window.fetch).not.toHaveBeenCalled());
+		await waitFor(() => expect(window.fetch).not.toHaveBeenCalledWith('http://localhost:4050/producers', expect.anything()));
+		await waitFor(() => expect(screen.getByText('Invalid CNPJ')).toBeInTheDocument());
 	});
 });

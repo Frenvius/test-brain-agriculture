@@ -69,12 +69,15 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 		form.setFieldsValue({ city: undefined });
 	};
 
-	const validateCPF: RuleObject['validator'] = () => {
+	const validateCPF: RuleObject['validator'] = async () => {
 		const cleanedInput = form.getFieldValue('taxDocument')?.replace(/\D/g, '');
 		const isCNPJ = cleanedInput?.length > 11;
-		if (!cleanedInput || validateTaxDocument(cleanedInput)) {
-			return Promise.resolve();
+		const complete = cleanedInput?.length === 11 || cleanedInput?.length === 14;
+		if (complete) {
+			const response = await producerService.search({ query: { taxDocument: cleanedInput } });
+			return response.items?.length > 0 ? Promise.reject(new Error(t('messages.taxDocument.alreadyExists'))) : Promise.resolve();
 		}
+		if (!cleanedInput || validateTaxDocument(cleanedInput)) return Promise.resolve();
 		return Promise.reject(new Error(isCNPJ ? t('messages.taxDocument.invalidCNPJ') : t('messages.taxDocument.invalidCPF')));
 	};
 
