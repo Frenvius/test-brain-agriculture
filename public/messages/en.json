@@ -84,7 +84,7 @@
 					"invalidCNPJ": "Invalid CNPJ"
 				},
 				"area": "Arable and vegetation areas must not exceed total farm area.",
-				"areaSize": "Area must be greater than 10 acres.",
+				"areaSize": "Area must be greater than {min} acres and less than {max} acres.",
 				"success": "Producer saved successfully.",
 				"updated": "Producer updated successfully.",
 				"error": "Error saving producer."

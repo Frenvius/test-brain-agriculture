@@ -84,7 +84,7 @@
 					"invalidCNPJ": "CNPJ inválido"
 				},
 				"area": "As áreas úteis e de vegetação não devem exceder a área total",
-				"areaSize": "Área deve ser maior que 10 hectares",
+				"areaSize": "Área deve ser maior que {min} e menor que {max} hectares",
 				"success": "Produtor salvo com sucesso",
 				"updated": "Produtor atualizado com sucesso",
 				"error": "Erro ao salvar produtor"

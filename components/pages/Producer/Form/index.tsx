@@ -92,7 +92,7 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 		return Promise.resolve();
 	};
 
-	const areaSize: RuleObject = { type: 'number', min: 10, message: t('messages.areaSize') };
+	const areaSize: RuleObject = { type: 'number', min: 5, max: 10000, message: t('messages.areaSize', { min: 5, max: 10000 }) };
 
 	const strForSearch = (str: string) => {
 		return str
