@@ -1,9 +1,17 @@
 import { CropResponse } from '~/app/domain/response/CropResponse';
 
+export interface StateData {
+	stateData: {
+		acronym: string;
+		label: string;
+		cities: string[];
+	}[];
+}
+
 export interface ProducerFormProps {
-	data: any;
 	title: string;
 	cropList: CropResponse[];
+	data: ProducerFormState | null;
 }
 
 export interface ProducerFormState {
@@ -12,8 +20,8 @@ export interface ProducerFormState {
 	name: string;
 	taxDocument: string;
 	farmName: string;
-	city: string;
-	state: string;
+	city?: string;
+	state?: string;
 	area: number;
 	usefulArea: number;
 	vegetationArea: number;

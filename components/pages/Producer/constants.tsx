@@ -30,16 +30,16 @@ export const columns = (t: any): ColumnsType<ProducerResponse> => [
 		)
 	},
 	{
-		title: t('list.city'),
-		dataIndex: ['farm', 'city'],
-		width: 180,
-		key: 'city'
-	},
-	{
 		title: t('list.state'),
 		dataIndex: ['farm', 'state'],
 		width: 180,
 		key: 'state'
+	},
+	{
+		title: t('list.city'),
+		dataIndex: ['farm', 'city'],
+		width: 180,
+		key: 'city'
 	},
 	{
 		title: t('list.area'),

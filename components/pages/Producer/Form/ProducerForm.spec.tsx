@@ -43,24 +43,36 @@ describe('ProducerForm', () => {
 
 		render(
 			<Translation>
-				<ProducerForm data={undefined} title={formTitle} cropList={cropListMock} />
+				<ProducerForm data={null} title={formTitle} cropList={cropListMock} />
 			</Translation>
 		);
 
 		const cropSelect = screen.getByRole('combobox', { name: 'Planted Crops' });
 		fireEvent.mouseDown(cropSelect);
-
 		await waitFor(() => {
 			return expect(document.querySelector('.ant-select-dropdown')).toBeInTheDocument();
 		});
-
 		fireEvent.click(document.querySelector(`[id="producer_plantedCrops_list_0"]`) as Element);
+
+		const stateSelect = screen.getByRole('combobox', { name: 'State' });
+		fireEvent.mouseDown(stateSelect);
+		await waitFor(() => {
+			return expect(document.querySelector('.ant-select-dropdown')).toBeInTheDocument();
+		});
+		fireEvent.change(document.querySelector('#producer_state') as Element, { target: { value: 'Acre' } });
+		fireEvent.click(document.querySelector(`[id="producer_state_list_0"]`) as Element);
+
+		const citySelect = screen.getByRole('combobox', { name: 'City' });
+		fireEvent.mouseDown(citySelect);
+		await waitFor(() => {
+			return expect(document.querySelector('.ant-select-dropdown')).toBeInTheDocument();
+		});
+		fireEvent.change(document.querySelector('#producer_city') as Element, { target: { value: 'Acrelândia' } });
+		fireEvent.click(document.querySelector(`[id="producer_city_list_0"]`) as Element);
 
 		fireEvent.change(screen.getByPlaceholderText("Producer's Name"), { target: { value: 'John Doe' } });
 		fireEvent.change(screen.getByPlaceholderText("Producer's CPF or CNPJ"), { target: { value: 96760983025 } });
 		fireEvent.change(screen.getByPlaceholderText('Farm Name'), { target: { value: 'Farm Name' } });
-		fireEvent.change(screen.getByPlaceholderText('City'), { target: { value: 'City Name' } });
-		fireEvent.change(screen.getByPlaceholderText('State'), { target: { value: 'State Name' } });
 		fireEvent.change(screen.getByPlaceholderText('Total Farm Area in Hectares'), { target: { value: '100' } });
 		fireEvent.change(screen.getByPlaceholderText('Arable Area in Hectares'), { target: { value: '50' } });
 		fireEvent.change(screen.getByPlaceholderText('Vegetation Area in Hectares'), { target: { value: '50' } });
@@ -75,7 +87,7 @@ describe('ProducerForm', () => {
 
 		render(
 			<Translation>
-				<ProducerForm data={undefined} title={formTitle} cropList={cropListMock} />
+				<ProducerForm data={null} title={formTitle} cropList={cropListMock} />
 			</Translation>
 		);
 
@@ -94,6 +106,8 @@ describe('ProducerForm', () => {
 		window.fetch = fetchMock({});
 		const dataMock = {
 			...initialValues,
+			state: 'Acre',
+			city: 'Acrelândia',
 			plantedCrops: ['Soy', 'Corn']
 		};
 
@@ -107,8 +121,6 @@ describe('ProducerForm', () => {
 		fireEvent.change(screen.getByPlaceholderText("Producer's CPF or CNPJ"), { target: { value: 30548527000116 } });
 		fireEvent.change(screen.getByPlaceholderText("Producer's CPF or CNPJ"), { target: { value: 30548527000116 } });
 		fireEvent.change(screen.getByPlaceholderText('Farm Name'), { target: { value: 'Farm Name' } });
-		fireEvent.change(screen.getByPlaceholderText('City'), { target: { value: 'City Name' } });
-		fireEvent.change(screen.getByPlaceholderText('State'), { target: { value: 'State Name' } });
 		fireEvent.change(screen.getByPlaceholderText('Total Farm Area in Hectares'), { target: { value: '100' } });
 		fireEvent.change(screen.getByPlaceholderText('Arable Area in Hectares'), { target: { value: '50' } });
 		fireEvent.change(screen.getByPlaceholderText('Vegetation Area in Hectares'), { target: { value: '50' } });
@@ -122,15 +134,13 @@ describe('ProducerForm', () => {
 		window.fetch = fetchMock({});
 		render(
 			<Translation>
-				<ProducerForm data={[]} title={formTitle} cropList={cropListMock} />
+				<ProducerForm data={null} title={formTitle} cropList={cropListMock} />
 			</Translation>
 		);
 
 		fireEvent.change(screen.getByPlaceholderText("Producer's Name"), { target: { value: '' } });
 		fireEvent.change(screen.getByPlaceholderText("Producer's CPF or CNPJ"), { target: { value: 1234567890 } });
 		fireEvent.change(screen.getByPlaceholderText('Farm Name'), { target: { value: '' } });
-		fireEvent.change(screen.getByPlaceholderText('City'), { target: { value: '' } });
-		fireEvent.change(screen.getByPlaceholderText('State'), { target: { value: '' } });
 		fireEvent.change(screen.getByPlaceholderText('Total Farm Area in Hectares'), { target: { value: '5' } });
 		fireEvent.change(screen.getByPlaceholderText('Arable Area in Hectares'), { target: { value: '10' } });
 		fireEvent.change(screen.getByPlaceholderText('Vegetation Area in Hectares'), { target: { value: '10' } });
@@ -144,7 +154,7 @@ describe('ProducerForm', () => {
 		window.fetch = fetchMock({});
 		render(
 			<Translation>
-				<ProducerForm data={[]} title={formTitle} cropList={cropListMock} />
+				<ProducerForm data={null} title={formTitle} cropList={cropListMock} />
 			</Translation>
 		);
 
@@ -161,7 +171,7 @@ describe('ProducerForm', () => {
 		window.fetch = fetchMock({});
 		render(
 			<Translation>
-				<ProducerForm data={[]} title={formTitle} cropList={cropListMock} />
+				<ProducerForm data={null} title={formTitle} cropList={cropListMock} />
 			</Translation>
 		);
 

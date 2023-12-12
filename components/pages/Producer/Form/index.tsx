@@ -7,7 +7,7 @@ import { RuleObject } from 'rc-field-form/lib/interface';
 import { Form, Input, Button, Select, Typography, InputNumber } from 'antd';
 
 import styles from './styles.module.scss';
-import { initialValues } from './constants';
+import { stateData, initialValues } from './constants';
 import Breadcrumb from '~/components/commons/Breadcrumb';
 import { useMessage } from '~/app/usecase/contexts/MessageContext';
 import { ProducerRequest } from '~/app/domain/request/ProducerRequest';
@@ -25,8 +25,10 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 	const router = useRouter();
 	const [form] = Form.useForm();
 	const t = useTranslations('producers.form');
-	const cropTranslation = useTranslations('producers.crops');
+	const [cities, setCities] = React.useState<string[]>([]);
 	const [taxDocument, setTaxDocument] = React.useState('');
+	const cropTranslation = useTranslations('producers.crops');
+	const [selectedState, setSelectedState] = React.useState(data ? data.state : '');
 
 	const onFinish = async (values: any) => {
 		if (!data) {
@@ -37,7 +39,7 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 		} else {
 			const body = { ...data, ...values };
 			const request = producerConverter.toEntity(body, cropList);
-			await producerService.update(data.id, request).then(() => {
+			await producerService.update(data.id!, request).then(() => {
 				finish(t('messages.success'));
 			});
 		}
@@ -51,6 +53,13 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 		msg.success(message);
 		router.refresh();
 		router.push('/producers');
+	};
+
+	const handleStateChange = (value: string) => {
+		setSelectedState(value);
+		const state = stateData.find((state) => state.label === value);
+		setCities(state!.cities);
+		form.setFieldsValue({ city: undefined });
 	};
 
 	const validateCPF: RuleObject['validator'] = () => {
@@ -78,6 +87,13 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 
 	const areaSize: RuleObject = { type: 'number', min: 10, message: t('messages.areaSize') };
 
+	const strForSearch = (str: string) => {
+		return str
+			.normalize('NFD')
+			.replace(/[\u0300-\u036f]/g, '')
+			.toLowerCase();
+	};
+
 	return (
 		<div className={styles.container}>
 			<Breadcrumb label={t('breadcrumb')} link={'/producers'} />
@@ -96,7 +112,10 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 				<Form.Item<ProducerRequest>
 					label={t('fields.name')}
 					name="name"
-					rules={[{ required: true, message: t('messages.required') }]}
+					rules={[
+						{ required: true, message: t('messages.required') },
+						{ max: 100, message: t('messages.max', { max: 100 }) }
+					]}
 				>
 					<Input placeholder={t('placeholders.name')} />
 				</Form.Item>
@@ -111,16 +130,44 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 					</TaxDocumentInput>
 				</Form.Item>
 
-				<Form.Item label={t('fields.farmName')} name="farmName" rules={[{ required: true, message: t('messages.required') }]}>
+				<Form.Item
+					label={t('fields.farmName')}
+					name="farmName"
+					rules={[
+						{ required: true, message: t('messages.required') },
+						{ max: 100, message: t('messages.max', { max: 100 }) }
+					]}
+				>
 					<Input placeholder={t('placeholders.farmName')} />
 				</Form.Item>
 
-				<Form.Item label={t('fields.city')} name="city" rules={[{ required: true, message: t('messages.required') }]}>
-					<Input placeholder={t('placeholders.city')} />
+				<Form.Item label={t('fields.state')} name="state" rules={[{ required: true, message: t('messages.required') }]}>
+					<Select
+						showSearch
+						virtual={false}
+						options={stateData}
+						fieldNames={{ label: 'label', value: 'label' }}
+						onChange={handleStateChange}
+						placeholder={t('placeholders.state')}
+						filterOption={(input, option) => {
+							return strForSearch(option?.label!).includes(strForSearch(input));
+						}}
+					/>
 				</Form.Item>
 
-				<Form.Item label={t('fields.state')} name="state" rules={[{ required: true, message: t('messages.required') }]}>
-					<Input placeholder={t('placeholders.state')} />
+				<Form.Item label={t('fields.city')} name="city" rules={[{ required: true, message: t('messages.required') }]}>
+					<Select
+						showSearch
+						virtual={false}
+						optionFilterProp="label"
+						placeholder={t('placeholders.city')}
+						disabled={!selectedState}
+						fieldNames={{ label: 'label', value: 'label' }}
+						options={cities.map((city) => ({ label: city }))}
+						filterOption={(input, option) => {
+							return strForSearch(option?.label!).includes(strForSearch(input));
+						}}
+					/>
 				</Form.Item>
 
 				<Form.Item label={t('fields.area')} name="area" rules={[{ required: true, ...areaSize }]}>

@@ -1,12 +1,14 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import { Space, Button, Popconfirm } from 'antd';
+import { Space, Button, Popconfirm, Typography } from 'antd';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
 import { useMessage } from '~/app/usecase/contexts/MessageContext';
 import { producerService } from '~/app/usecase/service/producer/service';
 import { ProducerResponse } from '~/app/domain/response/ProducerResponse';
+
+const { Text } = Typography;
 
 const TableActions = ({ data }: { data: ProducerResponse }) => {
 	const router = useRouter();
@@ -27,7 +29,12 @@ const TableActions = ({ data }: { data: ProducerResponse }) => {
 	};
 
 	const text = deleteConfirm('title');
-	const description = deleteConfirm('description', { name: data.name });
+
+	const Description = () => (
+		<Text style={{ maxWidth: '100%' }} ellipsis={true}>
+			{deleteConfirm('description', { name: data.name })}
+		</Text>
+	);
 
 	return (
 		<Space size="middle">
@@ -36,7 +43,7 @@ const TableActions = ({ data }: { data: ProducerResponse }) => {
 			<Popconfirm
 				placement="topRight"
 				title={text}
-				description={description}
+				description={Description}
 				onConfirm={handleDelete}
 				okText={deleteConfirm('confirm')}
 				cancelText={deleteConfirm('cancel')}

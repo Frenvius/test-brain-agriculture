@@ -25,3 +25,11 @@ a {
 	bottom: 40px !important;
 	top: unset !important;
 }
+
+[class*="ant-popover-content"] {
+	max-width: 450px;
+
+	[class*="ant-popconfirm-message-text"] {
+		width: calc(100% - 22px);
+	}
+}
