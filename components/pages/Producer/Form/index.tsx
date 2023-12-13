@@ -81,9 +81,9 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 			<Form
 				form={form}
 				name="producer"
-				labelCol={{ span: 7 }}
-				wrapperCol={{ span: 14 }}
-				style={{ maxWidth: '50%' }}
+				className={styles.form}
+				labelCol={{ md: { span: 8 }, xs: { span: 24 } }}
+				wrapperCol={{ md: { span: 14 }, xs: { span: 24 } }}
 				initialValues={data || initialValues}
 				onFinish={onFinish}
 				onFinishFailed={onFinishFailed}
@@ -186,7 +186,7 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 					</Select>
 				</Form.Item>
 
-				<Form.Item wrapperCol={{ offset: 7 }}>
+				<Form.Item wrapperCol={{ md: { offset: 8 }, xs: { offset: 0 } }}>
 					<Button type="primary" data-testid="submit" htmlType="submit">
 						{t('fields.submit')}
 					</Button>

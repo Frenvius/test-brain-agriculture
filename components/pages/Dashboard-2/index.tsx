@@ -31,7 +31,7 @@ const Dashboard2 = ({ data }: { data: DashboardResponse }) => {
 
 	return (
 		<Row gutter={[16, 16]} className={styles.container}>
-			<Col span={12}>
+			<Col xs={24} xl={12}>
 				<Card className={styles.totalCount}>
 					<Text type="secondary">{t('totalFarms')}</Text>
 					<Title level={4} className={styles.count}>
@@ -39,7 +39,7 @@ const Dashboard2 = ({ data }: { data: DashboardResponse }) => {
 					</Title>
 				</Card>
 			</Col>
-			<Col span={12}>
+			<Col xs={24} xl={12}>
 				<Card className={styles.totalCount}>
 					<Text type="secondary">{t('totalAcres')}</Text>
 					<Title level={4} className={styles.count}>
@@ -47,17 +47,17 @@ const Dashboard2 = ({ data }: { data: DashboardResponse }) => {
 					</Title>
 				</Card>
 			</Col>
-			<Col span={8}>
+			<Col xs={24} xl={8}>
 				<Card title={t('stateChartTitle')}>
 					<Pie data={data.pieChartByState} {...defaultConfig} />
 				</Card>
 			</Col>
-			<Col span={8}>
+			<Col xs={24} xl={8}>
 				<Card title={t('cropChartTitle')}>
 					<Pie data={cropsData} {...defaultConfig} />
 				</Card>
 			</Col>
-			<Col span={8}>
+			<Col xs={24} xl={8}>
 				<Card title={t('areaUsageChartTitle')}>
 					<Pie data={areaData} {...defaultConfig} />
 				</Card>

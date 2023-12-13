@@ -16,22 +16,26 @@ export const columns = (t: any): ColumnsType<ProducerResponse> => [
 		title: t('list.farmName'),
 		dataIndex: ['farm', 'name'],
 		key: 'farmName',
-		ellipsis: true
+		ellipsis: true,
+		responsive: ['md']
 	},
 	{
 		title: t('list.state'),
 		dataIndex: ['farm', 'state'],
 		ellipsis: true,
-		key: 'state'
+		key: 'state',
+		responsive: ['md']
 	},
 	{
 		title: t('list.city'),
 		dataIndex: ['farm', 'city'],
-		key: 'city'
+		key: 'city',
+		responsive: ['md']
 	},
 	{
 		title: t('list.area'),
 		className: 'areaHeader',
+		responsive: ['md'],
 		children: [
 			{
 				title: t('list.totalArea'),
@@ -60,6 +64,7 @@ export const columns = (t: any): ColumnsType<ProducerResponse> => [
 		title: t('list.plantedCrops'),
 		dataIndex: ['farm', 'plantedCrops'],
 		key: 'plantedCrops',
+		responsive: ['md'],
 		width: 220,
 		render: (crops) => <CropTags crops={crops} />
 	},

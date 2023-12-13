@@ -2,4 +2,16 @@
 	h2 {
 		margin-bottom: 6px;
 	}
+
+	.form {
+		max-width: 50%;
+
+		@media (max-width: 768px) {
+			max-width: 100%;
+
+			button[type="submit"] {
+				width: 100%;
+			}
+		}
+	}
 }
