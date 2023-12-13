@@ -4,7 +4,7 @@ import { producerService } from '~/app/usecase/service/producer/service';
 import { ProducerFormState } from '~/components/pages/Producer/Form/types';
 
 export const normalizeString = (value: string) => {
-	return value.replace(/[^A-Za-z \u00C0-\u00FF\u0300-\u036f´˜^'~`¨]+/g, '');
+	return value.replace(/[^A-Za-z \u00C0-\u00FF\u0300-\u036f´˜^ˆ'~`¨]+/g, '');
 };
 
 export const validateCPFString = async (data: ProducerFormState | null, form: FormInstance, t: any) => {
