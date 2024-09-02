@@ -17,8 +17,9 @@ jobs:
         run: |
           touch .env
           echo SERVER_URL=${{ secrets.SERVER_URL_PROD }} >> .env
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: docker-compose up -d --build
+      - name: Move project folder up
+        run: rsync -av --remove-source-files ./ ..
+      - name: Install dependencies
+        run: cd .. && bun install
+      - name: Build
+        run: cd .. && bun run build
