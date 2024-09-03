@@ -1,5 +1,5 @@
 import { Props } from './types';
-import Producer from '../../../components/pages/Producer';
+import Producer from '~/components/pages/Producer';
 import { producerService } from '~/app/usecase/service/producer/service';
 
 const ProducerPage = async ({ searchParams }: Props) => {
