@@ -47,9 +47,17 @@ const ProducerForm = ({ data, title, cropList }: ProducerFormProps) => {
 		} else {
 			const body = { ...data, ...values };
 			const request = producerConverter.toEntity(body, cropList);
-			await producerService.update(data.id!, request).then(() => {
-				finish(t('messages.success'));
-			});
+			await producerService
+				.update(data.id!, request)
+				.then(() => {
+					finish(t('messages.success'));
+				})
+				.catch((error) => {
+					if (error.toLowerCase().includes('conflict')) {
+						const field = error.split(' ').pop();
+						form.setFields([{ name: field, errors: [t(`messages.${field}.alreadyExists`)] }]);
+					}
+				});
 		}
 	};
 
